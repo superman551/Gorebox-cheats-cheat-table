@@ -2,41 +2,6 @@
 <CheatTable CheatEngineTableVersion="45">
   <CheatEntries>
     <CheatEntry>
-      <ID>5</ID>
-      <Description>"shit ur game"</Description>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
-//code from here to '[DISABLE]' will be used to enable the cheat
-alloc(newmem,2048,"UnityPlayer.dll"+9268A7) 
-label(returnhere)
-label(originalcode)
-label(exit)
-
-newmem: //this is allocated memory, you have read,write,execute access
-//place your code here
-mov eax,0
-originalcode:
-mov [rdx+r8+38],eax
-
-exit:
-jmp returnhere
-
-"UnityPlayer.dll"+9268A7:
-jmp newmem
-returnhere:
-
-
- 
- 
-[DISABLE]
-//code from here till the end of the code will be used to disable the cheat
-dealloc(newmem)
-"UnityPlayer.dll"+9268A7:
-db 42 89 44 02 38
-//mov [rdx+r8+38],eax
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
       <ID>8</ID>
       <Description>"abilities"</Description>
       <Options moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
@@ -44,108 +9,28 @@ db 42 89 44 02 38
       <Address>0</Address>
       <CheatEntries>
         <CheatEntry>
-          <ID>2</ID>
-          <Description>"inf stam"</Description>
-          <Options moAlwaysHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+          <ID>28</ID>
+          <Description>"super strength"</Description>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 //code from here to '[DISABLE]' will be used to enable the cheat
-alloc(newmem,2048,"GameAssembly.dll"+16A68A6)
-alloc(stam,2048,"GameAssembly.dll"+16A68A6)
+alloc(newmem,2048,"GameAssembly.dll"+D6B655)
+alloc(w,2048,"GameAssembly.dll"+D6B655)
 label(returnhere)
 label(originalcode)
 label(exit)
-
-stam:
+w:
 dd (float)10000
-
 newmem: //this is allocated memory, you have read,write,execute access
 //place your code here
-movss xmm0,[stam]
-originalcode:
-movss [rax+24],xmm0
-
-exit:
-jmp returnhere
-
-"GameAssembly.dll"+16A68A6:
-jmp newmem
-returnhere:
-
-
- 
- 
-[DISABLE]
-//code from here till the end of the code will be used to disable the cheat
-dealloc(newmem)
-"GameAssembly.dll"+16A68A6:
-db F3 0F 11 40 24
-//movss [rax+24],xmm0
-</AssemblerScript>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>12</ID>
-              <Description>"Auto Assemble script"</Description>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>[ENABLE]
-//code from here to '[DISABLE]' will be used to enable the cheat
-alloc(newmem,2048,"GameAssembly.dll"+1945623)
-alloc(stam,2048,"GameAssembly.dll"+1945623)
-label(returnhere)
-label(originalcode)
-label(exit)
-stam:
-dd (float)10000000
-newmem: //this is allocated memory, you have read,write,execute access
-//place your code here
-movss xmm0,[stam]
-originalcode:
-movss [rcx+24],xmm0
-
-exit:
-jmp returnhere
-
-"GameAssembly.dll"+1945623:
-jmp newmem
-returnhere:
-
-
- 
- 
-[DISABLE]
-//code from here till the end of the code will be used to disable the cheat
-dealloc(newmem)
-dealloc(stam)
-"GameAssembly.dll"+1945623:
-db F3 0F 11 41 24
-//movss [rcx+24],xmm0
-</AssemblerScript>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>7</ID>
-          <Description>"superhuman"</Description>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
-//code from here to '[DISABLE]' will be used to enable the cheat
-alloc(newmem,2048,"GameAssembly.dll"+1167503)
-alloc(adr,2048,"GameAssembly.dll"+1167503)
-label(returnhere)
-label(originalcode)
-label(exit)
-adr:
-dd (float)100000
-newmem: //this is allocated memory, you have read,write,execute access
-//place your code here
-movss xmm8,[adr]
+movss xmm8,[w]
 originalcode:
 movss [rbx+34],xmm8
 
 exit:
 jmp returnhere
 
-"GameAssembly.dll"+1167503:
+"GameAssembly.dll"+D6B655:
 jmp newmem
 nop
 returnhere:
@@ -156,36 +41,35 @@ returnhere:
 [DISABLE]
 //code from here till the end of the code will be used to disable the cheat
 dealloc(newmem)
-dealloc(adr)
-"GameAssembly.dll"+1167503:
+dealloc(w)
+"GameAssembly.dll"+D6B655:
 db F3 44 0F 11 43 34
 //movss [rbx+34],xmm8
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
-          <ID>14</ID>
-          <Description>"speed"</Description>
-          <Options moManualExpandCollapse="1"/>
+          <ID>19</ID>
+          <Description>"inf stam"</Description>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 //code from here to '[DISABLE]' will be used to enable the cheat
-alloc(newmem,2048,"GameAssembly.dll"+6DE40B)
-alloc(speed,2048,"GameAssembly.dll"+6DE40B)
+alloc(newmem,2048,"GameAssembly.dll"+D81C61)
+alloc(w,2048,"GameAssembly.dll"+D81C61)
 label(returnhere)
 label(originalcode)
 label(exit)
-speed:
-dd (float)25
+w:
+dd (float)20000
 newmem: //this is allocated memory, you have read,write,execute access
 //place your code here
-movss xmm1,[speed]
+movss xmm7,[w]
 originalcode:
-movss [rbx+20],xmm1
+movss [rdi+24],xmm7
 
 exit:
 jmp returnhere
 
-"GameAssembly.dll"+6DE40B:
+"GameAssembly.dll"+D81C61:
 jmp newmem
 returnhere:
 
@@ -195,35 +79,74 @@ returnhere:
 [DISABLE]
 //code from here till the end of the code will be used to disable the cheat
 dealloc(newmem)
-dealloc(speed)
-"GameAssembly.dll"+6DE40B:
+dealloc(w)
+"GameAssembly.dll"+D81C61:
+db F3 0F 11 7F 24
+//movss [rdi+24],xmm7
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"Speed"</Description>
+          <Options moManualExpandCollapse="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"GameAssembly.dll"+1218B3B)
+alloc(w,2048,"GameAssembly.dll"+1218B3B)
+label(returnhere)
+label(originalcode)
+label(exit)
+w:
+dd (float)25
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+movss xmm1,[w]
+originalcode:
+movss [rbx+20],xmm1
+
+exit:
+jmp returnhere
+
+"GameAssembly.dll"+1218B3B:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+dealloc(w)
+"GameAssembly.dll"+1218B3B:
 db F3 0F 11 4B 20
 //movss [rbx+20],xmm1
 </AssemblerScript>
           <CheatEntries>
             <CheatEntry>
-              <ID>15</ID>
-              <Description>"super speed"</Description>
+              <ID>11</ID>
+              <Description>"Super speed"</Description>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
 //code from here to '[DISABLE]' will be used to enable the cheat
-alloc(newmem,2048,"GameAssembly.dll"+6DE40B)
-alloc(speed,2048,"GameAssembly.dll"+6DE40B)
+alloc(newmem,2048,"GameAssembly.dll"+1218B3B)
+alloc(w,2048,"GameAssembly.dll"+1218B3B)
 label(returnhere)
 label(originalcode)
 label(exit)
-speed:
+w:
 dd (float)50
 newmem: //this is allocated memory, you have read,write,execute access
 //place your code here
-movss xmm1,[speed]
+movss xmm1,[w]
 originalcode:
 movss [rbx+20],xmm1
 
 exit:
 jmp returnhere
 
-"GameAssembly.dll"+6DE40B:
+"GameAssembly.dll"+1218B3B:
 jmp newmem
 returnhere:
 
@@ -233,8 +156,8 @@ returnhere:
 [DISABLE]
 //code from here till the end of the code will be used to disable the cheat
 dealloc(newmem)
-dealloc(speed)
-"GameAssembly.dll"+6DE40B:
+dealloc(w)
+"GameAssembly.dll"+1218B3B:
 db F3 0F 11 4B 20
 //movss [rbx+20],xmm1
 </AssemblerScript>
@@ -242,12 +165,6 @@ db F3 0F 11 4B 20
           </CheatEntries>
         </CheatEntry>
       </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>13</ID>
-      <Description>"No description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>176596D62C0</Address>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
