@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>72</ID>
+      <Description>"Inf stam"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : GoreBox.exe
+  Version: 
+  Date   : 2025-07-25
+  Author : superdude
+
+  This script does blah blah blah
+}
+
+define(address,"GameAssembly.dll"+5463B2)
+define(bytes,F3 0F 11 4B 2C)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"GameAssembly.dll"+5463B2)
+alloc(n,$1000,"GameAssembly.dll"+5463B2)
+
+label(code)
+label(return)
+n:
+dd (float)1000000
+newmem:
+movss xmm1,[n]
+code:
+  movss [rbx+2C],xmm1
+  jmp return
+
+address:
+  jmp newmem
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // movss [rbx+2C],xmm1
+
+dealloc(newmem)
+dealloc(n)
+
+{
+// ORIGINAL CODE - INJECTION POINT: GameAssembly.dll+5463B2
+
+GameAssembly.dll+546391: F3 0F 11 43 54           - movss [rbx+54],xmm0
+GameAssembly.dll+546396: 0F 2F F1                 - comiss xmm6,xmm1
+GameAssembly.dll+546399: 77 0A                    - ja GameAssembly.dll+5463A5
+GameAssembly.dll+54639B: 0F 2F CF                 - comiss xmm1,xmm7
+GameAssembly.dll+54639E: 76 08                    - jna GameAssembly.dll+5463A8
+GameAssembly.dll+5463A0: 0F 28 CF                 - movaps xmm1,xmm7
+GameAssembly.dll+5463A3: EB 03                    - jmp GameAssembly.dll+5463A8
+GameAssembly.dll+5463A5: 0F 57 C9                 - xorps xmm1,xmm1
+GameAssembly.dll+5463A8: F3 0F 10 43 30           - movss xmm0,[rbx+30]
+GameAssembly.dll+5463AD: F3 0F 10 5B 28           - movss xmm3,[rbx+28]
+// ---------- INJECTING HERE ----------
+GameAssembly.dll+5463B2: F3 0F 11 4B 2C           - movss [rbx+2C],xmm1
+// ---------- DONE INJECTING  ----------
+GameAssembly.dll+5463B7: F3 0F 10 4B 38           - movss xmm1,[rbx+38]
+GameAssembly.dll+5463BC: F3 0F 59 0D 3C B9 71 03  - mulss xmm1,[GameAssembly.dll+3C61D00]
+GameAssembly.dll+5463C4: F3 0F 58 CF              - addss xmm1,xmm7
+GameAssembly.dll+5463C8: F3 0F 5E C1              - divss xmm0,xmm1
+GameAssembly.dll+5463CC: F3 0F 10 4B 58           - movss xmm1,[rbx+58]
+GameAssembly.dll+5463D1: F3 0F 58 C7              - addss xmm0,xmm7
+GameAssembly.dll+5463D5: F3 41 0F 5E CD           - divss xmm1,xmm13
+GameAssembly.dll+5463DA: F3 0F 5E D8              - divss xmm3,xmm0
+GameAssembly.dll+5463DE: F3 0F 58 CF              - addss xmm1,xmm7
+GameAssembly.dll+5463E2: F3 0F 5E D9              - divss xmm3,xmm1
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>90</ID>
+      <Description>"Strength"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"GameAssembly.dll"+5461FF) 
+label(returnhere)
+label(originalcode)
+label(exit)
+alloc(n,2048,"GameAssembly.dll"+5461FF)
+n:
+dd (float)1000000
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+movss xmm8,[n]
+originalcode:
+movss [rbx+38],xmm8
+
+exit:
+jmp returnhere
+
+"GameAssembly.dll"+5461FF:
+jmp newmem
+nop
+returnhere:
+
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+dealloc(n)
+"GameAssembly.dll"+5461FF:
+db F3 44 0F 11 43 38
+//movss [rbx+38],xmm8
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>89</ID>
+      <Description>"Speed"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"GameAssembly.dll"+14AF59C)
+label(returnhere)
+label(originalcode)
+label(exit)
+alloc(n,2048,"GameAssembly.dll"+14AF59C)
+n:
+dd (float)25
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+movss xmm1,[n]
+originalcode:
+movss [rbx+20],xmm1
+
+exit:
+jmp returnhere
+
+"GameAssembly.dll"+14AF59C:
+jmp newmem
+returnhere:
+
+
+
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+dealloc(n)
+"GameAssembly.dll"+14AF59C:
+db F3 0F 11 4B 20
+//movss [rbx+20],xmm1
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>91</ID>
+      <Description>"invinc con"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"GameAssembly.dll"+5463FF) 
+label(returnhere)
+label(originalcode)
+label(exit)
+alloc(n,2048,"GameAssembly.dll"+5463FF)
+n:
+dd (float)100
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+movss xmm3,[n]
+originalcode:
+movss [rbx+50],xmm3
+
+exit:
+jmp returnhere
+
+"GameAssembly.dll"+5463FF:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+dealloc(n)
+"GameAssembly.dll"+5463FF:
+db F3 0F 11 5B 50
+//movss [rbx+50],xmm3
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>92</ID>
+      <Description>"invinc body"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : GoreBox.exe
+  Version: 
+  Date   : 2025-08-24
+  Author : joshd
+
+  This script does blah blah blah
+}
+
+define(address,"GameAssembly.dll"+6E9532)
+define(bytes,F3 0F 5C C6 F3 0F 11 43 24)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"GameAssembly.dll"+6E9532)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //subss xmm0,xmm6
+  //movss [rbx+24],xmm0
+  jmp return
+
+address:
+  jmp newmem
+  nop 4
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // subss xmm0,xmm6
+  // movss [rbx+24],xmm0
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: GameAssembly.dll+6E9532
+
+GameAssembly.dll+6E9502: 48 85 C0                    - test rax,rax
+GameAssembly.dll+6E9505: 0F 84 83 07 00 00           - je GameAssembly.dll+6E9C8E
+GameAssembly.dll+6E950B: 48 8B 88 00 02 00 00        - mov rcx,[rax+00000200]
+GameAssembly.dll+6E9512: 48 85 C9                    - test rcx,rcx
+GameAssembly.dll+6E9515: 0F 84 73 07 00 00           - je GameAssembly.dll+6E9C8E
+GameAssembly.dll+6E951B: 45 33 C0                    - xor r8d,r8d
+GameAssembly.dll+6E951E: 0F 28 CE                    - movaps xmm1,xmm6
+GameAssembly.dll+6E9521: E8 7A 97 9B 00              - call GameAssembly.dll+10A2CA0
+GameAssembly.dll+6E9526: F3 0F 10 43 24              - movss xmm0,[rbx+24]
+GameAssembly.dll+6E952B: 48 8B BB 90 00 00 00        - mov rdi,[rbx+00000090]
+// ---------- INJECTING HERE ----------
+GameAssembly.dll+6E9532: F3 0F 5C C6                 - subss xmm0,xmm6
+// ---------- DONE INJECTING  ----------
+GameAssembly.dll+6E9536: F3 0F 11 43 24              - movss [rbx+24],xmm0
+GameAssembly.dll+6E953B: 48 8B 0D 6E 0A 0E 04        - mov rcx,[GameAssembly.dll+47C9FB0]
+GameAssembly.dll+6E9542: 44 39 A1 E4 00 00 00        - cmp [rcx+000000E4],r12d
+GameAssembly.dll+6E9549: 75 05                       - jne GameAssembly.dll+6E9550
+GameAssembly.dll+6E954B: E8 50 30 BD FF              - call GameAssembly.il2cpp_runtime_class_init
+GameAssembly.dll+6E9550: 45 33 C0                    - xor r8d,r8d
+GameAssembly.dll+6E9553: 33 D2                       - xor edx,edx
+GameAssembly.dll+6E9555: 48 8B CF                    - mov rcx,rdi
+GameAssembly.dll+6E9558: E8 A3 37 1A 03              - call GameAssembly.dll+388CD00
+GameAssembly.dll+6E955D: F3 44 0F 10 05 3A 76 57 03  - movss xmm8,[GameAssembly.dll+3C60BA0]
+}
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Change of movss xmm1,[7FFD1E011000]</Description>
+      <AddressString>7FFD1E010000</AddressString>
+      <Before/>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>0D</Byte>
+        <Byte>F8</Byte>
+        <Byte>0F</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>4B</Byte>
+        <Byte>20</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss [rbx+20],xmm1</Description>
+      <AddressString>7FFD1E010008</AddressString>
+      <Before>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>4B</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>E9</Byte>
+        <Byte>FF</Byte>
+        <Byte>51</Byte>
+        <Byte>C6</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of jmp 7FFD29A30000</Description>
+      <AddressString>UnityPlayer.dll+51F2E0</AddressString>
+      <Before>
+        <Byte>10</Byte>
+        <Byte>01</Byte>
+        <Byte>4C</Byte>
+        <Byte>8B</Byte>
+        <Byte>DA</Byte>
+      </Before>
+      <Actual>
+        <Byte>E9</Byte>
+        <Byte>1B</Byte>
+        <Byte>0D</Byte>
+        <Byte>BC</Byte>
+        <Byte>01</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>1F</Byte>
+        <Byte>00</Byte>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>health :subss xmm0,xmm6</Description>
+      <AddressString>GameAssembly.dll+6E9532</AddressString>
+      <Before>
+        <Byte>BB</Byte>
+        <Byte>90</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>C6</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>43</Byte>
+        <Byte>24</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss xmm1,[rbx+00000120]</Description>
+      <AddressString>GameAssembly.dll+3BF9ED7</AddressString>
+      <Before>
+        <Byte>40</Byte>
+        <Byte>FC</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>F0</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>8B</Byte>
+        <Byte>20</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>2E</Byte>
+        <Byte>CE</Byte>
+        <Byte>7A</Byte>
+        <Byte>02</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss xmm0,[rcx+00000120]</Description>
+      <AddressString>GameAssembly.dll+3BFAC07</AddressString>
+      <Before>
+        <Byte>1C</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>81</Byte>
+        <Byte>20</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>85</Byte>
+        <Byte>6B</Byte>
+        <Byte>75</Byte>
+        <Byte>40</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
